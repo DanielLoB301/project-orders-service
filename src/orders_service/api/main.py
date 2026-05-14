@@ -10,6 +10,10 @@ from orders_service.core.security import verify_password, create_access_token
 from orders_service.infrastructure.user_repository import SqlUserRepository
 from orders_service.db.database import SessionLocal
 
+from sqlalchemy.orm import Session
+from orders_service.api.auth import get_db
+
+
 app = FastAPI(title="Orders Service")
 
 app.include_router(orders.router)
@@ -24,8 +28,10 @@ def root():
     return {"message": "Orders Service running"}
 
 @app.post("/token")
-def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    db = SessionLocal()
+def login(
+    form_data: OAuth2PasswordRequestForm = Depends(),
+    db: Session = Depends(get_db),
+):
     repo = SqlUserRepository(db)
 
     user = repo.get_by_username(form_data.username)

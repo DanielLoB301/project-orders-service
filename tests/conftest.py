@@ -6,7 +6,10 @@ from fastapi.testclient import TestClient
 
 from orders_service.api.main import app
 from orders_service.db.database import Base
-from orders_service.api.auth import get_db
+from orders_service.api.auth import get_db  # ✅ IMPORT CORRECTO
+
+# importar modelos explícitamente
+from orders_service.db.models import OrderORM, UserORM
 
 
 SQLALCHEMY_DATABASE_URL = "sqlite://"

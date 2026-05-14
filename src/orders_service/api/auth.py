@@ -6,17 +6,10 @@ from sqlalchemy.orm import Session
 from orders_service.core.security import SECRET_KEY, ALGORITHM
 from orders_service.db.database import SessionLocal
 from orders_service.infrastructure.user_repository import SqlUserRepository
-
+from orders_service.api.dependencies import get_db
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 
 def get_current_user(
