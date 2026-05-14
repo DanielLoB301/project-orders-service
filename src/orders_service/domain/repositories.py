@@ -1,4 +1,5 @@
 from typing import Protocol
+
 from orders_service.domain.entities import Order
 
 

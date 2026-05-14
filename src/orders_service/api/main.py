@@ -1,18 +1,13 @@
 from http.client import HTTPException
 
-from fastapi import FastAPI
-
-from orders_service.api.routers import orders
-from fastapi import Depends
+from fastapi import Depends, FastAPI
 from fastapi.security import OAuth2PasswordRequestForm
-
-from orders_service.core.security import verify_password, create_access_token
-from orders_service.infrastructure.user_repository import SqlUserRepository
-from orders_service.db.database import SessionLocal
-
 from sqlalchemy.orm import Session
-from orders_service.api.auth import get_db
 
+from orders_service.api.auth import get_db
+from orders_service.api.routers import orders
+from orders_service.core.security import create_access_token, verify_password
+from orders_service.infrastructure.user_repository import SqlUserRepository
 
 app = FastAPI(title="Orders Service")
 

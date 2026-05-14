@@ -1,5 +1,5 @@
-from orders_service.infrastructure.user_repository import SqlUserRepository
 from orders_service.core.security import hash_password
+from orders_service.infrastructure.user_repository import SqlUserRepository
 
 
 def create_user_and_token(client, db_session):

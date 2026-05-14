@@ -1,6 +1,6 @@
 from orders_service.domain.entities import Order
-from orders_service.domain.repositories import OrderRepository
 from orders_service.domain.notification_port import NotificationPort
+from orders_service.domain.repositories import OrderRepository
 
 
 class CreateOrderUseCase:

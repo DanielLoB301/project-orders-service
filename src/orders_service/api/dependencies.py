@@ -1,4 +1,3 @@
-from sqlalchemy.orm import Session
 from orders_service.db.database import SessionLocal
 
 

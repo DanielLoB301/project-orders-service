@@ -1,6 +1,5 @@
-from orders_service.db.database import SessionLocal
+from orders_service.db.database import SessionLocal, engine
 from orders_service.db.models import Base
-from orders_service.db.database import engine
 from orders_service.domain.entities import Order
 from orders_service.infrastructure.sql_repository import SqlOrderRepository
 

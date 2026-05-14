@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
 
+from orders_service.db.models import OrderORM
 from orders_service.domain.entities import Order
 from orders_service.domain.repositories import OrderRepository
-from orders_service.db.models import OrderORM
 
 
 class SqlOrderRepository(OrderRepository):

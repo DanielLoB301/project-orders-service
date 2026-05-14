@@ -1,4 +1,4 @@
-from sqlalchemy import Integer, Float, String
+from sqlalchemy import Float, Integer, String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from orders_service.db.database import Base
