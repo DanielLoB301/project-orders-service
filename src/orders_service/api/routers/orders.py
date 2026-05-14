@@ -6,7 +6,7 @@ from orders_service.application.use_cases import CreateOrderUseCase
 from orders_service.infrastructure.sql_repository import SqlOrderRepository
 from orders_service.db.database import SessionLocal
 from orders_service.domain.notification_port import NotificationPort
-
+from orders_service.api.auth import get_current_user
 
 router = APIRouter(prefix="/orders", tags=["orders"])
 
@@ -27,7 +27,11 @@ class ConsoleNotifier(NotificationPort):
 
 
 @router.post("/", response_model=OrderResponse)
-def create_order(order: OrderCreate, db: Session = Depends(get_db)):
+def create_order(
+    order: OrderCreate,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user),
+):
     repo = SqlOrderRepository(db)
     notifier = ConsoleNotifier()
 
